@@ -57,8 +57,15 @@
             success: function (response) {
                 console.log(response.responseText);
                 if (response.Success == "False") {
-                    $("#error-message").text(response.Message);
-                    $("#errorAlert").removeClass("hidden").show().delay(5000).fadeOut(500);
+                    //$("#error-message").text(response.Message);
+                    //$("#errorAlert").removeClass("hidden").show().delay(5000).fadeOut(500);
+                    console.log(response.Message);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: response.Message,
+                    })
+                    $("body").removeClass("swal2-height-auto");
                 } else {
                     $(".no-messages").hide();
                 }
